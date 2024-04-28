@@ -4,9 +4,13 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const { connectToDb } = require('./db/data-connections');
 const collectablesRoutes = require('./routes/collectables-routes')
+const signUpRoutes = require('./routes/sign-up-routes')
+const loginRoutes = require('./routes/login-routes.js')
 
 app.use(bodyParser.json())
 app.use('/collectables',collectablesRoutes)
+app.use('/signup',signUpRoutes)
+app.use('/login', loginRoutes)
 
 
 

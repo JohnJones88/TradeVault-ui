@@ -2,23 +2,31 @@ const express = require('express');
 const router = express.Router();
 const { Sequelize } = require('sequelize');
 const Collectables = require('../db/collectables-models');
+const { validateToken } = require('../utils/authentication');
+//const { Col } = require('react-bootstrap');
 
 
 
 
 
-router.get('/', async (req, res) => {
+router.get('/',validateToken, async (req, res) => {
   try {
-    console.log(req.query.random)
-    const collectables = await Collectables.findAll({ order: Sequelize.literal('rand()'), limit: 6 });
-    res.send(collectables)
+    //console.log(req.query.random)
+    if(!req.query.random){
+      const collectables = await Collectables.findAll(req.query.collectables);
+      res.send(collectables)
+    }
+    else{
+      const randcollectables = await Collectables.findAll({ order: Sequelize.literal('rand()') })
+      res.send(randcollectables)
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send(`Internal Server Error ${error}`)
   }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id',validateToken, async (req, res) => {
   try {
     const findCollectables = await Collectables.findByPk(req.params.id)
     if (!findCollectables) {
