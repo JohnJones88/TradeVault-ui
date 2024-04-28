@@ -13,7 +13,7 @@ router.get('/',validateToken, async (req, res) => {
   try {
     //console.log(req.query.random)
     if(!req.query.random){
-      const collectables = await Collectables.findAll(req.query.collectables);
+      const collectables = await Collectables.findAll();
       res.send(collectables)
     }
     else{
