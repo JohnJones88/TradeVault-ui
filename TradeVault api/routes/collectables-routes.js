@@ -32,28 +32,33 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.post('/', async (req,res) => {
+router.post('/', async (req, res) => {
   try {
-    if(!req.body.name){
+    if (!req.body.name) {
       res.status(400).send('name must have a value.')
       return;
     }
-    if(!req.body.description){
+    if (!req.body.description) {
       res.status(400).send('description must have a value.')
       return;
     }
-    if(!req.body.age){
+    if (!req.body.age) {
       res.status(400).send('age must have a value.')
+      return;
+    }
+    if (!req.body.condition) {
+      res.status(400).send('condition must have a value.')
       return;
     }
     let newCollectable = await Collectables.create({
       name: req.body.name,
-      description:req.body.description,
-      age: req.body.age
-      
+      description: req.body.description,
+      age: req.body.age,
+      condition: req.body.condition
+
     });
     res.status(201).send(newCollectable);
-    
+
   } catch (error) {
     console.log(error);
     res.status(500).send(`Internal Server Error ${error}`)

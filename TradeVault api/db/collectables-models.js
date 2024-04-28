@@ -2,22 +2,26 @@ const { sequelize } = require('./data-connections');
 const { DataTypes } = require('sequelize')
 
 const Collectables = sequelize.define('collectables', {
-  id:{
+  id: {
     type: DataTypes.INTEGER,
-    autoIncrement:true,
-    primaryKey:true
+    autoIncrement: true,
+    primaryKey: true
   },
   name: {
     type: DataTypes.STRING(64),
     allowNull: false
 
   },
-  description:{
+  description: {
     type: DataTypes.STRING(64),
     allowNull: false
   },
-  age:{
+  age: {
     type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  condition: {
+    type: DataTypes.STRING(64),
     allowNull: false
   }
 

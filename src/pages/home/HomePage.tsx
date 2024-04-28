@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Collectable from "../../models/Collectable";
 import Carousel from "react-bootstrap/Carousel";
-import TradeVaultCard from "../../components/Home";
+import TradeVaultCard from "../../components/card/TradeVaultCard";
 
 let images = [
     "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&w=500",
