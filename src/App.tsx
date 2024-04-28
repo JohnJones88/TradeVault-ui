@@ -18,8 +18,8 @@ function App() {
       </Container>
       <Routes>
         <Route>
-          <Route path='/' element={<SignUpPage />} />
-          <Route path='/' element={<SignInPage />} />
+          <Route path='/collectables/signup' element={<SignUpPage />} />
+          <Route path='/collectables/login' element={<SignInPage />} />
           <Route path='/' element={<HomePage />} />
         </Route>
       </Routes>

@@ -3,8 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { useNavigate } from "react-router-dom"
 
 function SignUpPage() {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -43,7 +45,7 @@ function SignUpPage() {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={SignUp}>
           Submit
         </Button>
       </Form>
@@ -51,7 +53,25 @@ function SignUpPage() {
   );
 
   function SignUp() {
+    const asyncSignUp = async () => {
+      const url = 'http://localhost:5000/collectables/signup';
 
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, userName: userName, password: password })
+      }
+      console.log(options)
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json()
+        console.log(data);
+        navigate('/collectables/login')
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    asyncSignUp();
   }
 }
 
