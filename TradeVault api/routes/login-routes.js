@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
       
-      if (!req.body.username) {
+      if (!req.body.user_name) {
           res.status(400).send("Username must exist");
           return;
       }
