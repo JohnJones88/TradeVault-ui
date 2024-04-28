@@ -31,7 +31,7 @@ const Signup = sequelize.define('signup', {
     allowNull: false
   },
 
-  userName: {
+  user_name: {
     type: DataTypes.STRING(256),
     unique: true,
     allowNull: false
