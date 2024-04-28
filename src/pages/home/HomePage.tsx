@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 import Collectable from "../../models/Collectable";
+import Carousel from "react-bootstrap/Carousel";
+import TradeVaultCard from "../../components/Home";
+
+let images = [
+    "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&w=500",
+    "https://images.freeimages.com/images/large-previews/3cb/the-treasure-1203251.jpg?fmt=webp&w=500",
+    "https://images.freeimages.com/images/large-previews/83f/paris-1213603.jpg?fmt=webp&w=500"]
 
 function HomePage() {
     const [collectables, setCollectables] = useState<Collectable[]>([]);
@@ -9,22 +16,28 @@ function HomePage() {
     }, []);
 
     return (
-        <div>
+        <div className="container">
             <h1>Home Page</h1>
-            {collectables.map((collectable) => (
-                <div key={collectable.id} className="row">
-                    <div className="col-4">
-                        <img src={collectable.image} alt={collectable.name} />
+
+            <div className="row">
+                <Carousel className="col-12">
+                    {images.map((image) => (
+                        <Carousel.Item>
+                            <img style={{ height: '40vh' }} src={image} className="img-fluid d-block w-100" />
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            </div>
+
+            <div className="row p-2" style={{ marginTop: '4%' }}>
+                {collectables.map((collectable) => (
+                    <div key={collectable.id} className="col">
+                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={collectable.image} age={collectable.age} condition={collectable.condition} />
                     </div>
-                    <div className="col-8">
-                        <h2>{collectable.name}</h2>
-                        <p>{collectable.description}</p>
-                        <p>{collectable.age}</p>
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
-    )
+    );
 
     async function getCollectables(): Promise<void> {
         //const resp = await fetch('http://localhost:5000/collectables?random=6'); // Grabs 6 random collectables

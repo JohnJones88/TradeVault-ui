@@ -4,6 +4,7 @@
         "name": "Bob Gibson",
         "description": "A pitcher for the st. Louis Cardinals",
         "age": 25,
+        "condition": "Worn",
         "image": ""
     },
     {
@@ -11,6 +12,7 @@
         "name": "Rob Plinksi",
         "description": "A catcher for the st. Louis Cardinals",
         "age": 25,
+        "condition": "New",
         "image": ""
     },
     {
@@ -18,6 +20,15 @@
         "name": "Roy Jones",
         "description": "A left field for the st. Louis Cardinals",
         "age": 25,
+        "condition": "Used",
+        "image": ""
+    },
+    {
+        "id": 4,
+        "name": "Roy Jones",
+        "description": "A left field for the st. Louis Cardinals",
+        "age": 25,
+        "condition": "Semi-Used",
         "image": ""
     }
 ]

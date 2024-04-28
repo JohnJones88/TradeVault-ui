@@ -4,7 +4,7 @@ interface Collectable {
     description: string;
     image: string;
     age: number;
-    //condition: string;
+    condition: string;
     //category: string;
 }
 
