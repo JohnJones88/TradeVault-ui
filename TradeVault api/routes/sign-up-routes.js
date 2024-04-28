@@ -1,8 +1,6 @@
 const express = require('express');
 const Signup = require('../db/sign-up-models');
-const bcrypt = require('bcrypt');
 const validator = require('validator');
-const { createToken } = require('../utils/authentication')
 const router = express.Router();
 
 
@@ -40,6 +38,7 @@ router.post('/', async (req, res) => {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
+            userName: req.body.userName,
             password: req.body.password,    
         };
 
