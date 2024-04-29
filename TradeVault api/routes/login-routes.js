@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
       
       const userFromDb = await Signup.findOne({
           where: {
-              email: req.body.username
+              user_name: req.body.user_name
           }
       })
       

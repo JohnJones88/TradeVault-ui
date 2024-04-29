@@ -9,24 +9,26 @@ const { validateToken } = require('../utils/authentication');
 
 
 
-router.get('/',validateToken, async (req, res) => {
+router.get('/',/*validateToken,*/ async (req, res) => {
   try {
     //console.log(req.query.random)
-    if(!req.query.random){
-      const collectables = await Collectables.findAll();
-      res.send(collectables)
+    let collectables = null
+    if (!req.query.random) {
+      collectables = await Collectables.findAll();
+      
     }
-    else{
-      const randcollectables = await Collectables.findAll({ order: Sequelize.literal('rand()') })
-      res.send(randcollectables)
+    else {
+      collectables = await Collectables.findAll({ order: Sequelize.literal('rand()'), limit: parseInt(req.query.random)  })
+
     }
+    res.send(collectables)
   } catch (error) {
-    console.log(error);
-    res.status(500).send(`Internal Server Error ${error}`)
-  }
+  console.log(error);
+  res.status(500).send(`Internal Server Error ${error}`)
+}
 })
 
-router.get('/:id',validateToken, async (req, res) => {
+router.get('/:id', validateToken, async (req, res) => {
   try {
     const findCollectables = await Collectables.findByPk(req.params.id)
     if (!findCollectables) {
