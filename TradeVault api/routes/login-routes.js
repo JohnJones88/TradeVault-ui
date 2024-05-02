@@ -5,44 +5,44 @@ const { createToken } = require('../utils/authentication')
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  try {
-      
-      if (!req.body.user_name) {
-          res.status(400).send("Username must exist");
-          return;
-      }
-     
-      if (!req.body.password) {
-          res.status(400).send("Password must exist");
-          return;
-      }
-      
-      const userFromDb = await Signup.findOne({
-          where: {
-              email: req.body.username
-          }
-      })
-      
-      let dbPassword = userFromDb?.password;
-      if (!dbPassword) {
-          dbPassword = "";
-      }
+    try {
 
-      const validPassword = await bcrypt.compare(req.body.password, dbPassword);
-      if (!validPassword) {
-          res.status(400).send("Invalid Credentials");
-          return;
-      }
+        if (!req.body.user_name) {
+            res.status(400).send("Username must exist");
+            return;
+        }
 
-      const token = createToken(userFromDb);
+        if (!req.body.password) {
+            res.status(400).send("Password must exist");
+            return;
+        }
 
-      res.send(token);
+        const userFromDb = await Signup.findOne({
+            where: {
+                email: req.body.username
+            }
+        })
 
-  } catch (error) {
+        let dbPassword = userFromDb?.password;
+        if (!dbPassword) {
+            dbPassword = "";
+        }
 
-      console.log(error);
-      res.status(500).send(`Internal Server Error ${error}`);
-  }
+        const validPassword = await bcrypt.compare(req.body.password, dbPassword);
+        if (!validPassword) {
+            res.status(400).send("Invalid Credentials");
+            return;
+        }
+
+        const token = createToken(userFromDb);
+
+        res.send(token);
+
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).send(`Internal Server Error ${error}`);
+    }
 })
 
 module.exports = router;

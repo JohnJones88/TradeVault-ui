@@ -9,14 +9,14 @@ const { validateToken } = require('../utils/authentication');
 
 
 
-router.get('/',validateToken, async (req, res) => {
+router.get('/',/*validateToken,*/ async (req, res) => {
   try {
     //console.log(req.query.random)
-    if(!req.query.random){
+    if (!req.query.random) {
       const collectables = await Collectables.findAll();
       res.send(collectables)
     }
-    else{
+    else {
       const randcollectables = await Collectables.findAll({ order: Sequelize.literal('rand()') })
       res.send(randcollectables)
     }
@@ -26,7 +26,7 @@ router.get('/',validateToken, async (req, res) => {
   }
 })
 
-router.get('/:id',validateToken, async (req, res) => {
+router.get('/:id', validateToken, async (req, res) => {
   try {
     const findCollectables = await Collectables.findByPk(req.params.id)
     if (!findCollectables) {

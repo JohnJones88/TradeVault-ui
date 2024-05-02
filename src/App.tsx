@@ -3,24 +3,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from "./pages/home/HomePage";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import SignInPage from "./pages/signIn/SignInPage";
+import LogInPage from "./pages/logIn/LoginPage";
 import SignUpPage from "./pages/signUp/SignUpPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <Container>
+      <div>
         <Navbar expand="lg" className="bg-body-tertiary">
-          <Container>
+          <div>
             <Navbar.Brand href="#">TradeVault</Navbar.Brand>
-          </Container>
+          </div>
         </Navbar>
-      </Container>
+      </div>
       <Routes>
         <Route>
-          <Route path='/collectables/signup' element={<SignUpPage />} />
-          <Route path='/collectables/login' element={<SignInPage />} />
-          <Route path='/' element={<HomePage />} />
+          <Route path='/signup' element={<SignUpPage />} />
+          <Route path='/' element={<LogInPage />} />
+          <Route path='/home' element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
