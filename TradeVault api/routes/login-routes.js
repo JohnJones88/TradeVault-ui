@@ -1,5 +1,5 @@
 const express = require('express');
-const Signup = require('../db/sign-up-models');
+const Users = require('../db/users-models');
 const bcrypt = require('bcrypt');
 const { createToken } = require('../utils/authentication')
 const router = express.Router();
@@ -17,9 +17,9 @@ router.post('/', async (req, res) => {
             return;
         }
 
-        const userFromDb = await Signup.findOne({
+        const userFromDb = await Users.findOne({
             where: {
-                email: req.body.username
+                user_name: req.body.user_name
             }
         })
 
