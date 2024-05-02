@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 
 
-const Signup = sequelize.define('signup', {
+const Users = sequelize.define('users', {
 
   id: {
     type: DataTypes.INTEGER,
@@ -44,15 +44,15 @@ const Signup = sequelize.define('signup', {
 }, {
   hooks: {
 
-    beforeSave: async (signup, options) => {
+    beforeSave: async (users, options) => {
 
-      if (signup.isNewRecord || signup.changed('password')) {
+      if (users.isNewRecord || users.changed('password')) {
         const saltRounds = 10;
-        signup.password = await bcrypt.hash(signup.password, saltRounds);
+        users.password = await bcrypt.hash(users.password, saltRounds);
       }
     }
   }
 });
 
 
-module.exports = Signup;
+module.exports = Users;

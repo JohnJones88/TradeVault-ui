@@ -3,7 +3,7 @@ const router = express.Router();
 const { Sequelize } = require('sequelize');
 const Collectables = require('../db/collectables-models');
 const { validateToken } = require('../utils/authentication');
-//const { Col } = require('react-bootstrap');
+const { Col } = require('react-bootstrap');
 
 
 
