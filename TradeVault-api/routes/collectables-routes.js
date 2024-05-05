@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const Collectables = require('../db/collectables-models');
 const { validateToken } = require('../utils/authentication');
 
-router.get('/',/*validateToken,*/ async (req, res) => {
+router.get('/', validateToken, async (req, res) => {
   try {
     //console.log(req.query.random)
     let collectables = null
