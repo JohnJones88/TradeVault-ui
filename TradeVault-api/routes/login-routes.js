@@ -36,7 +36,9 @@ router.post('/', async (req, res) => {
 
         const token = createToken(userFromDb);
 
-        res.send(token);
+        res.send({
+            token: token
+        });
 
     } catch (error) {
 

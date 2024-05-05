@@ -65,6 +65,9 @@ router.post('/', async (req, res) => {
     res.status(201).send(newCollectable);
 
   } catch (error) {
+    if(error.name === "SequelizeDatabaseError" && error.original.sqlMessage.includes('condition')){
+      res.status(400).send("Condition can only be Mint, Excellent, Very Good and Poor")
+    }
     console.log(error);
     res.status(500).send(`Internal Server Error ${error}`)
   }
