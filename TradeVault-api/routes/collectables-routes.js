@@ -6,7 +6,6 @@ const { validateToken } = require('../utils/authentication');
 
 router.get('/', validateToken, async (req, res) => {
   try {
-    //console.log(req.query.random)
     let collectables = null
     if (!req.query.random) {
       collectables = await Collectables.findAll();
