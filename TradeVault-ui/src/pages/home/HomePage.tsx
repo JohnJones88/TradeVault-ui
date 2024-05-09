@@ -29,9 +29,9 @@ function HomePage() {
                 </Carousel>
             </div>
 
-            <div className="row p-2" style={{ marginTop: '4%' }}>
+            <div className="row" style={{ marginTop: '4%', marginLeft: '2%' }}>
                 {collectables.map((collectable) => (
-                    <div key={collectable.id} className="col">
+                    <div key={collectable.id} className="col-md-3" style={{ marginBottom: '4%' }}>
                         <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={collectable.image} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
@@ -41,17 +41,21 @@ function HomePage() {
 
     async function getCollectables(): Promise<void> {
         try {
-            const options = {
+            /*const options = {
                 headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-            }
-            const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
-            //const resp = await fetch("./homePageData.json");
+            }*/
+            //const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
+            const resp = await fetch("./homePageData.json");
             const data = await resp.json();
 
             setCollectables(data);
         } catch (error) {
             console.error(error);
         }
+    }
+
+    function Navigate2() {
+
     }
 }
 
