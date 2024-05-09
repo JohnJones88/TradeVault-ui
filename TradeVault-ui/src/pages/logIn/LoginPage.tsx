@@ -41,10 +41,10 @@ function LogInPage() {
   function userLogIn() {
 
     const asyncGetUserLogIn = async () => {
-      const url = 'http://localhost:5000/';
+      const url = 'http://localhost:5000/login';
 
       const options = {
-        method: 'GET',
+        method: 'POST',
         headers: { 'content-Type': 'application/json' },
         body: JSON.stringify({ user_name: username, password: password })
       }
