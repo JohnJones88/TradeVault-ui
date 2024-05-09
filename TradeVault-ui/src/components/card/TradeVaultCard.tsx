@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 interface CardProps {
   id: number
@@ -14,22 +15,24 @@ interface CardProps {
 
 function TradeVaultCard({ id, image, age, name, description, condition }: CardProps) {
   return (
-    <div className="container">
-      <Card className="" style={{ width: '18rem', height: '30vh' }}>
-        <Card.Img variant="top" src={image} />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>{description}</Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroup.Item>{age}</ListGroup.Item>
-          <ListGroup.Item>{condition}</ListGroup.Item>
-        </ListGroup>
-        <Card.Body>
-          <Card.Link href="#">View</Card.Link>
-          <Card.Link href="#">Trade</Card.Link>
-        </Card.Body>
-      </Card>
+    <div className="">
+      <div className="" style={{ width: '18rem', height: '65vh' }}>
+        <Row>
+          <Col>
+            1 of 2
+            <img className="Image" style={{ height: '20vh' }}></img>
+          </Col>
+          <Col>
+            2 of 2
+            <div>
+              <p className='Name'>{name}</p>
+              <p className='Description'>{description}</p>
+              <p className='Condition'>{condition}</p>
+              <a href="#" className="btn btn-primary">View</a>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }
