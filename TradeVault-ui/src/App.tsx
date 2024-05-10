@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       {
         shouldShowNavBar && <div>
-          <Navbar expand="lg" className="bg-body-tertiary">
+          <Navbar expand="lg" className="bg-body-tertiary px-3">
             <div>
               <Navbar.Brand href="#">TradeVault</Navbar.Brand>
             </div>

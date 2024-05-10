@@ -17,10 +17,8 @@ function HomePage() {
 
     return (
         <div className="container">
-            <h1>Home Page</h1>
-
-            <div className="row">
-                <Carousel className="col-12">
+            <div className="row mb-5">
+                <Carousel className="col-12 px-0">
                     {images.map((image) => (
                         <Carousel.Item>
                             <img style={{ height: '40vh' }} src={image} className="img-fluid d-block w-100" />
@@ -29,10 +27,10 @@ function HomePage() {
                 </Carousel>
             </div>
 
-            <div className="row" style={{ marginTop: '4%', marginLeft: '2%' }}>
+            <div className="row g-4">
                 {collectables.map((collectable) => (
-                    <div key={collectable.id} className="col-md-3" style={{ marginBottom: '4%' }}>
-                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={collectable.image} age={collectable.age} condition={collectable.condition} />
+                    <div key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
+                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={"http://localhost:3000/s-l1200.webp"} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
             </div>
