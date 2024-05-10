@@ -1,0 +1,19 @@
+.tv-card {
+    height: 230px;
+}
+
+.tv-card-image {
+    height: 200px;
+}
+
+.tv-card-name {
+    height: 25px;
+}
+
+.tv-card-description {
+    height: 130px;
+}
+
+.tv-card-condition {
+    height: 25px;
+}
