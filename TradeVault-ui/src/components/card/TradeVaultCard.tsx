@@ -15,12 +15,12 @@ interface CardProps {
 
 function TradeVaultCard({ id, image, age, name, description, condition }: CardProps) {
   return (
-    <div className="">
-      <div className="" style={{ width: '18rem', height: '65vh' }}>
+    <div className="container">
+      <div className="" style={{ width: '18rem', height: "15rem", marginBottom: "20px", border: "solid" }}>
         <Row>
           <Col>
             1 of 2
-            <img className="Image" style={{ height: '20vh' }}></img>
+            <img className="Image"></img>
           </Col>
           <Col>
             2 of 2

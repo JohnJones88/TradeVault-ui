@@ -29,9 +29,9 @@ function HomePage() {
                 </Carousel>
             </div>
 
-            <div className="row" style={{ marginTop: '4%', marginLeft: '2%' }}>
+            <div className="row p-2" style={{ marginTop: '4%' }}>
                 {collectables.map((collectable) => (
-                    <div key={collectable.id} className="col-md-3" style={{ marginBottom: '4%' }}>
+                    <div key={collectable.id} className="col">
                         <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={collectable.image} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
