@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Collectables = require('../db/collectables-models');
+const { validateToken } = require('../utils/authentication');
 
 
-router.get('/:id', async (req, res) => {
+
+router.get('/:id', validateToken , async (req, res) => {
   try {
-    const findCollectables = await Collectables.findByPk(req.params.id)
-    if (!findCollectables) {
+    const viewCollectables = await Collectables.findByPk(req.params.id)
+    if (!viewCollectables) {
       res.status(404).send('Collectable is not found.');
       return;
     }
-    res.send(findCollectables);
+    res.send(viewCollectables);
   } catch (error) {
     console.log(error);
     res.status(500).send(`Internal Server Error ${error}`)
