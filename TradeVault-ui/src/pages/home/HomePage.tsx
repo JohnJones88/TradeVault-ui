@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Collectable from "../../models/Collectable";
 import Carousel from "react-bootstrap/Carousel";
 import TradeVaultCard from "../../components/card/TradeVaultCard";
+import { useNavigate } from 'react-router-dom';
 
 let images = [
     "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&w=500",
@@ -9,6 +10,9 @@ let images = [
     "https://images.freeimages.com/images/large-previews/83f/paris-1213603.jpg?fmt=webp&w=500"]
 
 function HomePage() {
+    const navigate = useNavigate();
+
+
     const [collectables, setCollectables] = useState<Collectable[]>([]);
 
     useEffect(() => {
@@ -29,7 +33,7 @@ function HomePage() {
 
             <div className="row g-4">
                 {collectables.map((collectable) => (
-                    <div key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
+                    <div onClick={() => navigateTo()} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
                         <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={"http://localhost:3000/s-l1200.webp"} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
@@ -52,8 +56,15 @@ function HomePage() {
         }
     }
 
-    function Navigate2() {
-
+    function navigateTo() {
+        const asyncNavigateTo = async () => {
+            try {
+                navigate('/view')
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        asyncNavigateTo();
     }
 }
 
