@@ -7,14 +7,14 @@ const { connectToDb } = require('./db/data-connections');
 const collectablesRoutes = require('./routes/collectables-routes')
 const usersRoutes = require('./routes/users-routes.js')
 const loginRoutes = require('./routes/login-routes.js')
-const viewRoutes = require('./routes/view-routes.js')
+
 
 app.use(cors());
 app.use(bodyParser.json())
 app.use('/collectables', collectablesRoutes)
 app.use('/users', usersRoutes)
 app.use('/login', loginRoutes)
-app.use('/view', viewRoutes )
+
 
 
 

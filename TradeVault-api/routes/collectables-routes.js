@@ -22,7 +22,7 @@ router.get('/', validateToken, async (req, res) => {
   }
 })
 
-/*router.get('/:id', validateToken, async (req, res) => {
+router.get('/view/:id', validateToken, async (req, res) => {
   try {
     const findCollectables = await Collectables.findByPk(req.params.id)
     if (!findCollectables) {
@@ -36,7 +36,7 @@ router.get('/', validateToken, async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/create', validateToken, async (req, res) => {
   try {
     if (!req.body.name) {
       res.status(400).send('name must have a value.')
@@ -70,6 +70,56 @@ router.post('/', async (req, res) => {
     console.log(error);
     res.status(500).send(`Internal Server Error ${error}`)
   }
-})*/
+})
+router.put('/update/:id', validateToken, async (req,res)=>{
+  try {
+    if (!req.body.name) {
+      res.status(400).send("name must be a value")
+      return;
+    }
+    if (!req.body.description) {
+      res.status(400).send("description must be a value")
+      return;
+    }
+    if (!req.body.age) {
+      res.status(400).send('age must have a value.')
+      return;
+    }
+    if (!req.body.condition) {
+      res.status(400).send('condition must have a value.')
+      return;
+    }
+    const toUpdateCollectable = await Collectables.findByPk(req.params.id)
+    if (!toUpdateCollectable) {
+      res.status(404).send("Collectable is not found")
+      return;
+    }
+    toUpdateCollectable.name = req.body.name,
+    toUpdateCollectable.description = req.body.description,
+    toUpdateCollectable.age = req.body.age,
+    toUpdateCollectable.condition = req.body.condition;
+    
+    await toUpdateCollectable.save();
+    res.status(200).send();
+  } catch (error) {
+    if(error.name === "SequelizeDatabaseError" && error.original.sqlMessage.includes('condition')){
+      res.status(400).send("Condition can only be Mint, Excellent, Very Good and Poor")
+    }
+    console.log(error);
+    res.status(500).send(`Internal Server Error ${error}`)
+  }
+
+})
+router.delete('/:id', async (req, res) => {
+  try {
+      const deleteCollectable = await Collectables.findByPk(req.params.id);
+      await deleteCollectable.destroy();
+      
+      res.status(204).send();
+  } catch (error) {
+      console.log(error);
+      res.status(500).send(`Internal Server Error ${error}`)
+  }
+})
 
 module.exports = router;
