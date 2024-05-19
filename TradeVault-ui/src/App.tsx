@@ -3,7 +3,9 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from "./pages/home/HomePage";
 import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInPage from "./pages/logIn/LoginPage";
 import SignUpPage from "./pages/signUp/SignUpPage";
 import ViewPage from "./pages/view/ViewPage";
@@ -18,10 +20,17 @@ function App() {
     <BrowserRouter>
       {
         shouldShowNavBar && <div>
-          <Navbar expand="lg" className="bg-body-tertiary px-3">
-            <div>
-              <Navbar.Brand href="#">TradeVault</Navbar.Brand>
-            </div>
+          <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+            <Container className="bg-dark">
+              <Navbar.Brand href="/home">TradeVault</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link href="/">Login</Nav.Link>
+                  <Nav.Link href="/create">Create</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
           </Navbar>
         </div>
       }

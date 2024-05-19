@@ -5,9 +5,9 @@ import TradeVaultCard from "../../components/card/TradeVaultCard";
 import { useNavigate } from 'react-router-dom';
 
 let images = [
-    "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&w=500",
-    "https://images.freeimages.com/images/large-previews/3cb/the-treasure-1203251.jpg?fmt=webp&w=500",
-    "https://images.freeimages.com/images/large-previews/83f/paris-1213603.jpg?fmt=webp&w=500"]
+    "https://wallpapers.com/images/featured/solid-color-background-8hx8sccuk0vb8hpx.jpg",
+    "https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-orange-FFA500-4096x2160-TV4K.png?v=20171211195613",
+    "https://wallpapers.com/images/hd/solid-color-gradient-brown-6csx08ohspevfyhm.jpg"]
 
 function HomePage() {
     const navigate = useNavigate();
@@ -24,8 +24,11 @@ function HomePage() {
             <div className="row mb-5">
                 <Carousel className="col-12 px-0">
                     {images.map((image) => (
-                        <Carousel.Item>
+                        <Carousel.Item >
                             <img style={{ height: '40vh' }} src={image} className="img-fluid d-block w-100" />
+                            <Carousel.Caption>
+                                <h1>The Trade Vault</h1>
+                            </Carousel.Caption>
                         </Carousel.Item>
                     ))}
                 </Carousel>
@@ -33,7 +36,7 @@ function HomePage() {
 
             <div className="row g-4">
                 {collectables.map((collectable) => (
-                    <div onClick={() => navigateTo()} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
+                    <div onClick={() => navigate(collectable.id)} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
                         <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={"http://localhost:3000/s-l1200.webp"} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
@@ -43,11 +46,11 @@ function HomePage() {
 
     async function getCollectables(): Promise<void> {
         try {
-            /*const options = {
+            const options = {
                 headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-            }*/
-            //const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
-            const resp = await fetch("./homePageData.json");
+            }
+            const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
+            //const resp = await fetch("./homePageData.json");
             const data = await resp.json();
 
             setCollectables(data);
@@ -56,7 +59,7 @@ function HomePage() {
         }
     }
 
-    function navigateTo() {
+    /*function navigateTo() {
         const asyncNavigateTo = async () => {
             try {
                 navigate('/view')
@@ -65,7 +68,7 @@ function HomePage() {
             }
         }
         asyncNavigateTo();
-    }
+    }*/
 }
 
 export default HomePage;
