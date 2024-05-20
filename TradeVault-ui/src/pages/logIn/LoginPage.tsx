@@ -9,21 +9,22 @@ function LogInPage() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [hasError, setHasError] = useState(false);
 
   return (
     <div className="login-page container d-flex align-items-center justify-content-center">
       <Card style={{ maxWidth: '100%', width: "50rem" }}>
         <Card.Body>
           <div className="50-w p-5 rounded">
-            <form>
+            <form className="needs-validation">
               <h3 className="text-center">Sign In</h3>
               <div className="mb-2">
                 <label typeof="text">Username</label>
-                <input type="username" placeholder="Enter Username" className="form-control" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+                <input type="username" required placeholder="Enter Username" className={`form-control ${hasError ? 'is-invalid' : ''}`} value={username} onChange={(e) => { setUsername(e.target.value) }} />
               </div>
               <div className="mb-2">
                 <label htmlFor="password">Password</label>
-                <input type="password" placeholder="Enter Password" className="form-control" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                <input type="password" required placeholder="Enter Password" className={`form-control ${hasError ? 'is-invalid' : ''}`} value={password} onChange={(e) => { setPassword(e.target.value) }} />
               </div>
               <div className="mb-2">
                 <input type="checkbox" className="custom-control custom-checkbox" id="check" />
@@ -34,9 +35,16 @@ function LogInPage() {
               <div className="d-grid">
                 <button className="btn btn-primary" type="button" onClick={userLogIn}>Log in</button>
               </div>
-              <p className="text-end mt-2">
-                Forgot <a href="">Password?</a><a href="" className="ms-2" onClick={() => navigate('/signup')}>Register</a>
-              </p>
+              <div className="row">
+                {hasError &&
+                  <p className="col-4 error-color">
+                    Invalid Credentials
+                  </p>
+                }
+                <p className={`text-end ${hasError ? 'col-8' : 'col-12'}`}>
+                  Forgot <a href="">Password?</a><a href="" className="ms-2" onClick={() => navigate('/signup')}>Register</a>
+                </p>
+              </div>
             </form>
           </div>
         </Card.Body>
@@ -65,7 +73,8 @@ function LogInPage() {
 
         navigate('/home')
       } catch (error) {
-        console.error(error);
+        setHasError(true);
+        //setValidate(true)
       }
     }
     asyncGetUserLogIn()
