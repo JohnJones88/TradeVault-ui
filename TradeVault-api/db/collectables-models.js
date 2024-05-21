@@ -22,7 +22,8 @@ const Collectables = sequelize.define('collectables', {
   },
   condition: {
     type: DataTypes.ENUM('mint', 'excellent', 'very good', 'poor')
-  }
+  },
+  
 })
 
 

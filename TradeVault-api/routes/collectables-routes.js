@@ -22,7 +22,7 @@ router.get('/', validateToken, async (req, res) => {
   }
 })
 
-router.get('/view/:id', validateToken, async (req, res) => {
+router.get('/:id', validateToken, async (req, res) => {
   try {
     const findCollectables = await Collectables.findByPk(req.params.id)
     if (!findCollectables) {
@@ -36,7 +36,7 @@ router.get('/view/:id', validateToken, async (req, res) => {
   }
 })
 
-router.post('/create', validateToken, async (req, res) => {
+router.post('/', validateToken, async (req, res) => {
   try {
     if (!req.body.name) {
       res.status(400).send('name must have a value.')
@@ -71,7 +71,7 @@ router.post('/create', validateToken, async (req, res) => {
     res.status(500).send(`Internal Server Error ${error}`)
   }
 })
-router.put('/update/:id', validateToken, async (req,res)=>{
+router.put('/:id', validateToken, async (req,res)=>{
   try {
     if (!req.body.name) {
       res.status(400).send("name must be a value")
