@@ -40,9 +40,8 @@ function App() {
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/' element={<LogInPage />} />
           <Route path='/home' element={<HomePage />} />
-          <Route path='/view' element={<ViewPage />} />
+          <Route path='/view/:id' element={<ViewPage />} />
           <Route path='/create' element={<CreatePage />} />
-          <Route path='/create/update/:id' element={<CreatePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -49,7 +49,7 @@ function HomePage() {
             const options = {
                 headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
             }
-            const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
+           const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
             //const resp = await fetch("./homePageData.json");
             const data = await resp.json();
 

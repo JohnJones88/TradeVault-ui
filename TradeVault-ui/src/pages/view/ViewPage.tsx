@@ -1,26 +1,32 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Card from 'react-bootstrap/Card';
 import Collectable from "../../models/Collectable";
-import TradeVaultCard from "../../components/card/TradeVaultCard";
+import { FormSelect } from "react-bootstrap";
+
 
 function ViewPage() {
-  /*const navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
-  
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [age, setAge] = useState('')
-  const [condition, setCondition] = useState('')*/
+  const [condition, setCondition] = useState('')
 
   const [viewCollectables, setViewCollectables] = useState<Collectable[]>([]);
-  /*useEffect(() => {
+  useEffect(() => {
+
 
     const asyncGetTradeCardById = async () => {
-      const url = `http://localhost:5000/view${id}`;
+      const url = `http://localhost:5000/collectables/${id}`;
+      const options = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
+      }
+
 
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, options);
         const data = await response.json();
         console.log(data);
         setName(data.name)
@@ -35,20 +41,17 @@ function ViewPage() {
     if (id) {
       asyncGetTradeCardById();
     }
-  }, []);;*/
+  }, []);
 
-  return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-      <Card.Body>
-        <div className="row g-4">
-                {viewCollectables.map((collectable) => (
-                    <div key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
-                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={"http://localhost:3000/s-l1200.webp"} age={collectable.age} condition={collectable.condition} />
-                    </div>
-                ))}</div>
-      </Card.Body>
-    </Card>
+  return (<div>
+    
+    <div>name: {name}</div>
+    <div>description: {description}</div>
+    <div>age: {age}</div>
+    <div>condition: {condition}</div>
+
+  </div>
+
   )
 
   async function getViewCollectables(): Promise<void> {
@@ -57,14 +60,38 @@ function ViewPage() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
       }
-      const resp = await fetch('http://localhost:5000/view', options)
+      const resp = await fetch(`http://localhost:5000/collectables/${id}`, options)
       const data = await resp.json();
 
       setViewCollectables(data);
     } catch (error) {
       console.error(error);
+    };
+    const asyncPutCollectable = async () => {
+      const url = `http://localhost:5000/collectables/${id}`;
+
+      const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, description: description, age: age, condition: condition })
+      }
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        console.log(data)
+        asyncPutCollectable();
+
+
+        navigate('/view')
+      } catch (error) {
+        console.error(error);
+      }
+
+
     }
-  }
+  } getViewCollectables()
+
 }
 
 export default ViewPage;
