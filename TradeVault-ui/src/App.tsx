@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       {
         shouldShowNavBar && <div>
-          <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+          <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
             <Container className="bg-dark">
               <Navbar.Brand href="/home">TradeVault</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />

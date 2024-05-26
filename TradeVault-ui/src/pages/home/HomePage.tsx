@@ -36,7 +36,7 @@ function HomePage() {
 
             <div className="row g-4">
                 {collectables.map((collectable) => (
-                    <div onClick={() => navigate(collectable.id)} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
+                    <div onClick={() => navigateTo(collectable.id)} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
                         <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} image={"http://localhost:3000/s-l1200.webp"} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
@@ -46,11 +46,11 @@ function HomePage() {
 
     async function getCollectables(): Promise<void> {
         try {
-            const options = {
+            /*const options = {
                 headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
             }
-           const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
-            //const resp = await fetch("./homePageData.json");
+            const resp = await fetch('http://localhost:5000/collectables?random=6', options);*/ // Grabs 6 random collectables
+            const resp = await fetch("./homePageData.json");
             const data = await resp.json();
 
             setCollectables(data);
@@ -59,16 +59,16 @@ function HomePage() {
         }
     }
 
-    /*function navigateTo() {
-        const asyncNavigateTo = async () => {
+    function navigateTo(id: number) {
+        const asyncNavigateTo = async (id: number) => {
             try {
-                navigate('/view')
+                navigate('/view/:id')
             } catch (error) {
                 console.error(error);
             }
         }
-        asyncNavigateTo();
-    }*/
+        asyncNavigateTo(id);
+    }
 }
 
 export default HomePage;
