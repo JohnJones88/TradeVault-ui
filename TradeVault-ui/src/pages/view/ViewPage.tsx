@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Collectable from "../../models/Collectable";
-import { FormSelect } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import './ViewPage.css';
+
+
 
 
 function ViewPage() {
@@ -44,12 +47,19 @@ function ViewPage() {
   }, []);
 
   return (<div>
-    
-    <div>name: {name}</div>
-    <div>description: {description}</div>
-    <div>age: {age}</div>
-    <div>condition: {condition}</div>
+      <div className="view-page container container d-flex align-items-center justify-content-center">
+      <Card style={{ height: "10rem", maxWidth: '100%', width: "18rem" }}>
+      <Card.Body>
 
+    <div>Name: {name}</div>
+    <div>Description: {description}</div>
+    <div>Age: {age}</div>
+    <div>Condition: {condition}</div>
+    
+    </Card.Body>
+    </Card>
+    </div>
+    
   </div>
 
   )
