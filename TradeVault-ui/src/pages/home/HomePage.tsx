@@ -62,7 +62,7 @@ function HomePage() {
     function navigateTo(id: number) {
         const asyncNavigateTo = async (id: number) => {
             try {
-                navigate(`/view/:${id}`)
+                navigate(`/view/${id}`)
             } catch (error) {
                 console.error(error);
             }
