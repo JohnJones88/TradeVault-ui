@@ -47,19 +47,19 @@ function ViewPage() {
   }, []);
 
   return (<div>
-      <div className="view-page container container d-flex align-items-center justify-content-center">
+    <div className="view-page container container d-flex align-items-center justify-content-center">
       <Card style={{ height: "10rem", maxWidth: '100%', width: "18rem" }}>
-      <Card.Body>
+        <Card.Body>
 
-    <div>Name: {name}</div>
-    <div>Description: {description}</div>
-    <div>Age: {age}</div>
-    <div>Condition: {condition}</div>
-    
-    </Card.Body>
-    </Card>
+          <div>Name: {name}</div>
+          <div>Description: {description}</div>
+          <div>Age: {age}</div>
+          <div>Condition: {condition}</div>
+
+        </Card.Body>
+      </Card>
     </div>
-    
+
   </div>
 
   )
