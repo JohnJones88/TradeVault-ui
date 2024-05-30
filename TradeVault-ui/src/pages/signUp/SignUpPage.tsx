@@ -39,7 +39,7 @@ function SignUpPage() {
                 <input type="password" required placeholder="Enter Password" className="form-control" value={password} onChange={(e) => { setPassword(e.target.value) }} />
               </div>
               <div className="d-grid mt-2">
-                <button className="btn btn-primary" type="button" onClick={SignUp}>Log in</button>
+                <button className="btn btn-primary" type="button" onClick={SignUp}>MERGE CONFLIXT TEST in</button>
               </div>
               <p className="text-end mt-2">
                 Already Registered? <a href="" className="ms-2" onClick={() => navigate('/')}>Sign in</a>
