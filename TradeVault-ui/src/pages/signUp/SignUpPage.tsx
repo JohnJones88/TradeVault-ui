@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { Card } from "react-bootstrap";
+import './SignUpPage.css';
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -10,38 +12,42 @@ function SignUpPage() {
   const [lastName, setLastName] = useState('');
 
   return (
-    <div className="signup template d-flex justify-content-center align-items-center vh-50">
-      <div className="50-w p-5 rounded">
-        <form>
-          <h3 className="text-center">Sign Up</h3>
-          <div className="mb-2">
-            <label typeof="text">First Name</label>
-            <input type="firstName" placeholder="Enter First Name" className="form-control" value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+    <div className="signup container d-flex align-items-center justify-content-center">
+      <Card style={{ maxWidth: '100%', width: "50rem" }}>
+        <Card.Body>
+          <div className="50-w p-5 rounded">
+            <form className="needs-validation">
+              <h3 className="text-center">Sign Up</h3>
+              <div className="was-validated mb-2">
+                <label typeof="text">First Name</label>
+                <input type="firstName" required placeholder="Enter First Name" className="form-control" value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+              </div>
+              <div className="was-validated mb-2">
+                <label typeof="text">Last Name</label>
+                <input type="firstName" required placeholder="Enter Last Name" className="form-control" value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
+              </div>
+              <div className="was-validated mb-2">
+                <label htmlFor="email">Email</label>
+                <input type="email" required placeholder="Enter Email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+              </div>
+              <div className="was-validated mb-2">
+                <label typeof="text">Username</label>
+                <input type="username" required placeholder="Enter Username" className="form-control" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+              </div>
+              <div className="was-validated mb-2">
+                <label htmlFor="password">Password</label>
+                <input type="password" required placeholder="Enter Password" className="form-control" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+              </div>
+              <div className="d-grid mt-2">
+                <button className="btn btn-primary" type="button" onClick={SignUp}>Log in</button>
+              </div>
+              <p className="text-end mt-2">
+                Already Registered? <a href="" className="ms-2" onClick={() => navigate('/')}>Sign in</a>
+              </p>
+            </form>
           </div>
-          <div className="mb-2">
-            <label typeof="text">Last Name</label>
-            <input type="firstName" placeholder="Enter Last Name" className="form-control" value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
-          </div>
-          <div className="mb-2">
-            <label htmlFor="email">Email</label>
-            <input type="email" placeholder="Enter Email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-          </div>
-          <div className="mb-2">
-            <label typeof="text">Username</label>
-            <input type="username" placeholder="Enter Username" className="form-control" value={username} onChange={(e) => { setUsername(e.target.value) }} />
-          </div>
-          <div className="mb-2">
-            <label htmlFor="password">Password</label>
-            <input type="password" placeholder="Enter Password" className="form-control" value={password} onChange={(e) => { setPassword(e.target.value) }} />
-          </div>
-          <div className="d-grid mt-2">
-            <button className="btn btn-primary" type="button" onClick={SignUp}>Log in</button>
-          </div>
-          <p className="text-end mt-2">
-            Already Registered? <a href="" className="ms-2" onClick={() => navigate('/')}>Sign in</a>
-          </p>
-        </form>
-      </div>
+        </Card.Body>
+      </Card>
     </div>
   );
 
