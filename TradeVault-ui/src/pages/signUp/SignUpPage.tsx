@@ -19,23 +19,23 @@ function SignUpPage() {
           <div className="50-w p-5 rounded">
             <form className="needs-validation">
               <h3 className="text-center">Sign Up</h3>
-              <div className={`mb-2 ${hasError ? 'was-validated' :  ''}`}>
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label typeof="text">First Name</label>
                 <input type="firstName" required placeholder="Enter First Name" className="form-control" value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
               </div>
-              <div className={`mb-2 ${hasError ? 'was-validated' :  ''}`}>
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label typeof="text">Last Name</label>
                 <input type="firstName" required placeholder="Enter Last Name" className="form-control" value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
               </div>
-              <div className={`mb-2 ${hasError ? 'was-validated' :  ''}`}>
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label htmlFor="email">Email</label>
                 <input type="email" required placeholder="Enter Email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
               </div>
-              <div className={`mb-2 ${hasError ? 'was-validated' :  ''}`}>
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label typeof="text">Username</label>
                 <input type="username" required placeholder="Enter Username" className="form-control" value={username} onChange={(e) => { setUsername(e.target.value) }} />
               </div>
-              <div className={`mb-2 ${hasError ? 'was-validated' :  ''}`}>
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label htmlFor="password">Password</label>
                 <input type="password" required placeholder="Enter Password" className="form-control" value={password} onChange={(e) => { setPassword(e.target.value) }} />
               </div>
@@ -54,7 +54,7 @@ function SignUpPage() {
 
   function SignUp() {
     const asyncSignUp = async () => {
-      const url = 'http://localhost:5000/signup';
+      const url = 'http://localhost:5000/users';
 
       const options = {
         method: 'POST',
