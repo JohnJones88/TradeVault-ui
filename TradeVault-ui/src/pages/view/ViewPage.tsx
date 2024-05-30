@@ -65,9 +65,8 @@ function ViewPage() {
         <div className="row">
           <label className="form-label">Condition: {condition}</label>
         </div>
-        <button className="btn btn-primary" type="button" onClick={getViewCollectables}>Edit </button>
-        <button className="btn btn-primary" type="button" >Trade </button>
-        <button className="btn btn-danger" type="button" >Delete </button>
+        <button className="btn btn-primary" type="button" onClick={() => navigate('/home')}>Home </button>
+        
       </Card.Body>
       
     </Card>
