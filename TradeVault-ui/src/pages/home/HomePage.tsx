@@ -46,11 +46,11 @@ function HomePage() {
 
     async function getCollectables(): Promise<void> {
         try {
-            /*const options = {
+            const options = {
                 headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
             }
-            const resp = await fetch('http://localhost:5000/collectables?random=6', options);*/ // Grabs 6 random collectables
-            const resp = await fetch("./homePageData.json");
+            const resp = await fetch('http://localhost:5000/collectables?random=6', options); // Grabs 6 random collectables
+           // const resp = await fetch("./homePageData.json");
             const data = await resp.json();
 
             setCollectables(data);

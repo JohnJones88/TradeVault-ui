@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Collectable from "../../models/Collectable";
 import { Card } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 import './ViewPage.css';
 
 
@@ -47,19 +48,31 @@ function ViewPage() {
   }, []);
 
   return (<div>
-      <div className="view-page container container d-flex align-items-center justify-content-center">
-      <Card style={{ height: "10rem", maxWidth: '100%', width: "18rem" }}>
-      <Card.Body>
 
-    <div>Name: {name}</div>
-    <div>Description: {description}</div>
-    <div>Age: {age}</div>
-    <div>Condition: {condition}</div>
-    
-    </Card.Body>
+    <div className="container mb-4"><h3>Collectable</h3></div>
+
+    <Card border="primary container" style={{ width: '18rem' }}>
+      <Card.Body>
+        <div className="row">
+          <label className="form-label">Name: {name}</label>
+        </div>
+        <div className="row">
+          <label className="form-label">Description: {description}</label>
+        </div>
+        <div className="row">
+          <label className="form-label">Age: {age}</label>
+        </div>
+        <div className="row">
+          <label className="form-label">Condition: {condition}</label>
+        </div>
+        <button className="btn btn-primary" type="button" onClick={getViewCollectables}>Edit </button>
+        <button className="btn btn-primary" type="button" >Trade </button>
+        <button className="btn btn-danger" type="button" >Delete </button>
+      </Card.Body>
+      
     </Card>
-    </div>
-    
+
+
   </div>
 
   )
@@ -93,7 +106,7 @@ function ViewPage() {
         asyncPutCollectable();
 
 
-        navigate('/view')
+        navigate('/view/:id')
       } catch (error) {
         console.error(error);
       }

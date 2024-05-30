@@ -15,38 +15,46 @@ function CreatePage() {
 
 
   return (
-    <div>
-
-      <div>
+    <div className="container pt-4">
+      <div className="mb-5">
         {id ? <h1>Update Collectable</h1> : <h1>Create Collectable</h1>}
       </div>
-
-      <div>
-        <label>Name</label>
-        <input type="text" placeholder="Enter Collectable name" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+      <div className="row mb-3">
+        <div className="col-4">
+          <label className="form-label">Name</label>
+          <input className="form-control" type="text" placeholder="Enter Collectable name" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+        </div>
       </div>
 
-      <div>
-        <label>Description</label>
-        <input type="text" placeholder="Enter Collectable description" value={description} onChange={(e) => { setDescription(e.target.value) }}></input>
-      </div>
-      <div>
-        <label>Age</label>
-        <input type="text" placeholder="Enter Collectable age" value={age} onChange={(e) => { setAge(e.target.value) }}></input>
+      <div className="row mb-3">
+        <div className="col-4">
+          <label className="form-label">Description</label>
+          <textarea className="form-control" rows={4} placeholder="Enter Collectable description" value={description} onChange={(e) => { setDescription(e.target.value) }}></textarea >
+        </div>
       </div>
 
-      <Form.Select aria-label="Default select example" value={condition} onChange={(e) => {setCondition(e.target.value)}}>
-        <option>Choose the Condition</option>
-        <option value="Mint">Mint</option>
-        <option value="Excellent">Excellent</option>
-        <option value="Very Good">Very Good</option>
-        <option value="Poor">Poor</option>
-      </Form.Select>
+      <div className="row mb-4">
+        <div className="col-4">
+          <label className="form-label">Age</label>
+          <input className="form-control" type="number" placeholder="Enter Collectable age" value={age} onChange={(e) => { setAge(e.target.value) }}></input>
+        </div>
+      </div>
+
+      <div className="row mb-3">
+        <div className="col-4">
+          <Form.Select className="form-control" aria-label="Default select example" value={condition} onChange={(e) => { setCondition(e.target.value) }}>
+            <option>Choose the Condition</option>
+            <option value="Mint">Mint</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Very Good">Very Good</option>
+            <option value="Poor">Poor</option>
+          </Form.Select>
+        </div>
+      </div>
 
       <div>
         <button type="submit" className="btn btn-primary" onClick={addCollectable}>Submit</button>
       </div>
-
     </div>
   );
   function addCollectable() {
