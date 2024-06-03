@@ -9,7 +9,7 @@ const sequelize = new Sequelize('collectables_db', process.env.DB_USER, process.
 const connectToDb = async () => {
   try {
   
-    sequelize.sync({ force: DB_FORCE_UPDATE });
+    sequelize.sync({ force: process.env.DB_FORCE_UPDATE });
 
     await sequelize.authenticate();
     console.log("Successfully connected to our db")
