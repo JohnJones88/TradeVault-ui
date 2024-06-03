@@ -1,3 +1,5 @@
+var dotenv = require('dotenv')
+dotenv.config()
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -7,6 +9,8 @@ const { connectToDb } = require('./db/data-connections');
 const collectablesRoutes = require('./routes/collectables-routes')
 const usersRoutes = require('./routes/users-routes.js')
 const loginRoutes = require('./routes/login-routes.js')
+
+
 
 
 app.use(cors());
