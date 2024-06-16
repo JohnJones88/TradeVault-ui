@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const Collectables = require('../db/collectables-models');
 const { validateToken } = require('../utils/authentication');
 
-router.get('/', /*validateToken,*/  async (req, res) => {
+router.get('/', validateToken,  async (req, res) => {
   try {
     let collectables = null
     if (!req.query.random) {
@@ -22,7 +22,7 @@ router.get('/', /*validateToken,*/  async (req, res) => {
   }
 })
 
-router.get('/:id', /*validateToken,*/  async (req, res) => {
+router.get('/:id', validateToken,  async (req, res) => {
   try {
     const findCollectables = await Collectables.findByPk(req.params.id)
     if (!findCollectables) {
@@ -36,7 +36,7 @@ router.get('/:id', /*validateToken,*/  async (req, res) => {
   }
 })
 
-router.post('/', /*validateToken,*/ async (req, res) => {
+router.post('/', validateToken, async (req, res) => {
   try {
     if (!req.body.name) {
       res.status(400).send('name must have a value.')
