@@ -62,7 +62,7 @@ function LogInPage() {
   function userLogIn() {
 
     const asyncGetUserLogIn = async () => {
-      const url = 'http://localhost:5000/login';
+      const url = process.env.BASE_URL + '/login';
 
       const options = {
         method: 'POST',

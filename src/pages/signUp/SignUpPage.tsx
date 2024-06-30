@@ -54,7 +54,7 @@ function SignUpPage() {
 
   function SignUp() {
     const asyncSignUp = async () => {
-      const url = 'http://localhost:5000/users';
+      const url = process.env.BASE_URL + '/users';
 
       const options = {
         method: 'POST',

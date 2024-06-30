@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 
 
 
+
+
 function CreatePage() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -60,7 +62,7 @@ function CreatePage() {
   function addCollectable() {
 
     const asyncPostCollectable = async () => {
-      const url = 'http://localhost:5000/collectables';
+      const url = process.env.BASE_URL + '/collectables';
 
       const options = {
         method: 'POST',
@@ -79,7 +81,7 @@ function CreatePage() {
     }
 
     const asyncPutCollectable = async () => {
-      const url = `http://localhost:5000/collectables/${id}`;
+      const url = process.env.BASE_URL + `/collectables/${id}`;
 
       const options = {
         method: 'PUT',
