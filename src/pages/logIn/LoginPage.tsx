@@ -62,7 +62,7 @@ function LogInPage() {
   function userLogIn() {
 
     const asyncGetUserLogIn = async () => {
-      const url = process.env.BASE_URL + '/login';
+      const url = process.env.REACT_APP_BASE_URL + '/login';
 
       const options = {
         method: 'POST',
