@@ -22,7 +22,7 @@ function ViewPage() {
 
 
     const asyncGetTradeCardById = async () => {
-      const url = process.env.BASE_URL + `/collectables/${id}`;
+      const url = process.env.REACT_APP_BASE_URL + `/collectables/${id}`;
       const options = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
@@ -82,7 +82,7 @@ function ViewPage() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
       }
-      const resp = await fetch(process.env.BASE_URL + `/collectables/${id}`, options)
+      const resp = await fetch(process.env.REACT_APP_BASE_URL + `/collectables/${id}`, options)
       const data = await resp.json();
 
       setViewCollectables(data);
@@ -90,7 +90,7 @@ function ViewPage() {
       console.error(error);
     };
     const asyncPutCollectable = async () => {
-      const url = process.env.BASE_URL + `/collectables/${id}`;
+      const url = process.env.REACT_APP_BASE_URL + `/collectables/${id}`;
 
       const options = {
         method: 'PUT',
