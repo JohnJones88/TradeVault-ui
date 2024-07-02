@@ -62,7 +62,7 @@ function CreatePage() {
   function addCollectable() {
 
     const asyncPostCollectable = async () => {
-      const url = process.env.BASE_URL + '/collectables';
+      const url = process.env.REACT_APP_BASE_URL + '/collectables';
 
       const options = {
         method: 'POST',
@@ -81,7 +81,7 @@ function CreatePage() {
     }
 
     const asyncPutCollectable = async () => {
-      const url = process.env.BASE_URL + `/collectables/${id}`;
+      const url = process.env.REACT_APP_BASE_URL + `/collectables/${id}`;
 
       const options = {
         method: 'PUT',
