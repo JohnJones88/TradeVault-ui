@@ -54,7 +54,7 @@ function SignUpPage() {
 
   function SignUp() {
     const asyncSignUp = async () => {
-      const url = process.env.BASE_URL + '/users';
+      const url = process.env.REACT_APP_BASE_URL + '/users';
 
       const options = {
         method: 'POST',
