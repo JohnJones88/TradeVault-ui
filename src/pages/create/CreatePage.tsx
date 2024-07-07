@@ -9,7 +9,6 @@ import Form from 'react-bootstrap/Form';
 function CreatePage() {
   const navigate = useNavigate();
   const { id } = useParams();
-
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [age, setAge] = useState('')

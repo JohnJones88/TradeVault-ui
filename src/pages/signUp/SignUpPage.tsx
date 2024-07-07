@@ -8,8 +8,8 @@ function SignUpPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
   const [hasError, setHasError] = useState(false);
 
   return (
@@ -21,11 +21,11 @@ function SignUpPage() {
               <h3 className="text-center">Sign Up</h3>
               <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label typeof="text">First Name</label>
-                <input type="firstName" required placeholder="Enter First Name" className="form-control" value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+                <input type="first_name" required placeholder="Enter First Name" className="form-control" value={first_name} onChange={(e) => { setFirstName(e.target.value) }} />
               </div>
               <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label typeof="text">Last Name</label>
-                <input type="firstName" required placeholder="Enter Last Name" className="form-control" value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
+                <input type="last_name" required placeholder="Enter Last Name" className="form-control" value={last_name} onChange={(e) => { setLastName(e.target.value) }} />
               </div>
               <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label htmlFor="email">Email</label>
@@ -59,7 +59,7 @@ function SignUpPage() {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, user_name: username, password: password })
+        body: JSON.stringify({ firstName: first_name, lastName: last_name, email: email, user_name: username, password: password })
       }
       console.log(options)
       try {
