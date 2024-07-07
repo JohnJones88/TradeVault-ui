@@ -65,7 +65,7 @@ function CreatePage() {
 
       const options = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
         body: JSON.stringify({ name: name, description: description, age: age, condition: "Mint" })
       }
 
@@ -73,6 +73,9 @@ function CreatePage() {
         const response = await fetch(url, options);
         const data = await response.json()
         console.log(data);
+
+        localStorage.setItem('profile-token', data.token)
+
         navigate('/view')
       } catch (error) {
         console.error(error);
@@ -84,7 +87,7 @@ function CreatePage() {
 
       const options = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
         body: JSON.stringify({ name: name, description: description, age: age, condition: condition })
       }
 
@@ -93,6 +96,7 @@ function CreatePage() {
         const data = await response.json()
         console.log(data);
 
+        localStorage.setItem('profile-token', data.token)
 
         navigate('/view')
       } catch (error) {
