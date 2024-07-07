@@ -33,6 +33,9 @@ function ViewPage() {
         const response = await fetch(url, options);
         const data = await response.json();
         console.log(data);
+
+        localStorage.setItem('profile-token', data.token)
+
         setName(data.name)
         setDescription(data.description)
         setAge(data.age)
@@ -66,9 +69,9 @@ function ViewPage() {
           <label className="form-label">Condition: {condition}</label>
         </div>
         <button className="btn btn-primary" type="button" onClick={() => navigate('/home')}>Home </button>
-        
+
       </Card.Body>
-      
+
     </Card>
 
 
@@ -94,7 +97,7 @@ function ViewPage() {
 
       const options = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
         body: JSON.stringify({ name: name, description: description, age: age, condition: condition })
       }
 
@@ -102,6 +105,9 @@ function ViewPage() {
         const response = await fetch(url, options);
         const data = await response.json();
         console.log(data)
+
+        localStorage.setItem('profile-token', data.token)
+
         asyncPutCollectable();
 
 

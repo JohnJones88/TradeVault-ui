@@ -11,34 +11,19 @@ import LogInPage from "./pages/logIn/LoginPage";
 import SignUpPage from "./pages/signUp/SignUpPage";
 import ViewPage from "./pages/view/ViewPage";
 import CreatePage from "./pages/create/CreatePage";
-
-const hideNavBarPaths = ["/", "/signup"];
+import WithoutNav from "./components/WithoutNav";
+import WithNav from "./components/WithNav";
 
 function App() {
-  const [shouldShowNavBar, setShouldShowNavBar] = useState(hideNavBarPaths.find(x => x == window.location.pathname) == null);
 
   return (
     <BrowserRouter>
-      {
-        shouldShowNavBar && <div>
-          <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-            <Container className="bg-dark">
-              <Navbar.Brand href="/home">TradeVault</Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                  <Nav.Link href="/">Login</Nav.Link>
-                  <Nav.Link href="/create">Create</Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-        </div>
-      }
       <Routes>
-        <Route>
+        <Route element={<WithoutNav />}>
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/' element={<LogInPage />} />
+        </Route>
+        <Route element={<WithNav />}>
           <Route path='/home' element={<HomePage />} />
           <Route path='/view/:id' element={<ViewPage />} />
           <Route path='/create' element={<CreatePage />} />

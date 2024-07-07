@@ -66,6 +66,7 @@ function SignUpPage() {
         const response = await fetch(url, options);
         const data = await response.json()
         console.log(data);
+
         navigate('/')
       } catch (error) {
         setHasError(true);

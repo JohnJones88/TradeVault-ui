@@ -66,7 +66,7 @@ function LogInPage() {
 
       const options = {
         method: 'POST',
-        headers: { 'content-Type': 'application/json' },
+        headers: { 'content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
         body: JSON.stringify({ user_name: username, password: password })
       }
       console.log(options)
