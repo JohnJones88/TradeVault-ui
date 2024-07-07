@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-export const Navbar = () => {
+export const NavBar = () => {
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
