@@ -18,14 +18,14 @@ function LogInPage() {
           <div className="50-w p-5 rounded">
             <form className="needs-validation">
               <h3 className="text-center">Sign In</h3>
-              <div className="was-validated mb-2">
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label typeof="text">Username</label>
                 <input type="username" required placeholder="Enter Username" className={`form-control ${hasError ? 'is-invalid' : ''}`} value={username} onChange={(e) => { setUsername(e.target.value) }} />
                 <div className="invalid-feedback">
                   Please Enter Your Username
                 </div>
               </div>
-              <div className="was-validated mb-2">
+              <div className={`mb-2 ${hasError ? 'was-validated' : ''}`}>
                 <label htmlFor="password">Password</label>
                 <input type="password" required placeholder="Enter Password" className={`form-control ${hasError ? 'is-invalid' : ''}`} value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 <div className="invalid-feedback">
