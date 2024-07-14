@@ -66,7 +66,7 @@ function CreatePage() {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-        body: JSON.stringify({ name: name, description: description, age: age, condition: "Mint" })
+        body: JSON.stringify({ name: name, description: description, age: age, condition: condition })
       }
 
       try {
@@ -98,7 +98,7 @@ function CreatePage() {
 
         localStorage.setItem('profile-token', data.token)
 
-        navigate('/view')
+        navigate('/view/:id')
       } catch (error) {
         console.error(error);
       }
