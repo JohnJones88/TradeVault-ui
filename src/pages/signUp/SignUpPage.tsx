@@ -59,7 +59,7 @@ function SignUpPage() {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: first_name, lastName: last_name, email: email, user_name: username, password: password })
+        body: JSON.stringify({ first_name: first_name, last_name: last_name, email: email, user_name: username, password: password })
       }
       console.log(options)
       try {
