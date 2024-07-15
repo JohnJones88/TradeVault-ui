@@ -74,8 +74,6 @@ function CreatePage() {
         const data = await response.json()
         console.log(data);
 
-        localStorage.setItem('profile-token', data.token)
-
         navigate('/view')
       } catch (error) {
         console.error(error);
@@ -95,8 +93,6 @@ function CreatePage() {
         const response = await fetch(url, options);
         const data = await response.json()
         console.log(data);
-
-        localStorage.setItem('profile-token', data.token)
 
         navigate('/view/:id')
       } catch (error) {

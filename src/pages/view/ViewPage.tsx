@@ -34,8 +34,6 @@ function ViewPage() {
         const data = await response.json();
         console.log(data);
 
-        localStorage.setItem('profile-token', data.token)
-
         setName(data.name)
         setDescription(data.description)
         setAge(data.age)
@@ -105,8 +103,6 @@ function ViewPage() {
         const response = await fetch(url, options);
         const data = await response.json();
         console.log(data)
-
-        localStorage.setItem('profile-token', data.token)
 
         asyncPutCollectable();
 
