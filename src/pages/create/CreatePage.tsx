@@ -74,7 +74,7 @@ function CreatePage() {
         const data = await response.json()
         console.log(data);
 
-        navigate('/view')
+        navigate(`/view/${data.id}`)
       } catch (error) {
         console.error(error);
       }
@@ -94,7 +94,7 @@ function CreatePage() {
         const data = await response.json()
         console.log(data);
 
-        navigate('/view/:id')
+        navigate(`/view/${data.id}`)
       } catch (error) {
         console.error(error);
       }
