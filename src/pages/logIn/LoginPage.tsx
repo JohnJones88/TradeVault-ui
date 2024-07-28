@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import './LoginPage.css';
+import BaseHttpServices from "../../components/services/BaseHttpServices";
 
 function LogInPage() {
   const navigate = useNavigate();
@@ -61,6 +62,8 @@ function LogInPage() {
 
   function userLogIn() {
 
+    const httpService = new BaseHttpServices();
+
     const asyncGetUserLogIn = async () => {
       const url = process.env.REACT_APP_BASE_URL + '/login';
 
@@ -80,7 +83,7 @@ function LogInPage() {
         navigate('/home')
       } catch (error) {
         setHasError(true);
-        //setValidate(true)
+        
       }
     }
     asyncGetUserLogIn()
