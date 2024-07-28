@@ -1,7 +1,94 @@
 .view-page {
   height: 100%;
   min-width: 100%;
-
   margin-top: 100px;
 }
 
+.container-body {
+  padding-top: 10%;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.collectable-img-info{
+  width: 100%;
+}
+
+.collectable-img-info h2{
+  padding: 30px 30px 20px;
+  font-family: arial;
+  font-size: 50px;
+  line-height: 44px;
+}
+
+.collectable-img-info p{
+  padding: 0px 30px 20px;
+  font-family: arial;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.collectable-img-info h4{
+  padding: 0px 30px 20px;
+  font-family: arial;
+  font-size: 25px;
+  line-height: 24px;
+}
+
+.collectable-img{
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .collectable-img-info h2{
+    padding: 20px 0px 0px;
+  }
+  
+  .collectable-img-info p{
+    padding: 20px 0px 0px;
+  }
+  
+  .collectable-img-info h4{
+    padding: 20px 0px 0px;
+  }
+
+  .collectable-img{
+    padding-top: 30px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .wrapper {
+    width: 1000px;
+  }
+
+  .collectable-img-info{
+    width: 50%;
+    float: right;
+  }
+
+  .collectable-img-info h2{
+    padding: 20px 0px 0px 30px;
+  }
+  
+  .collectable-img-info p{
+    padding: 20px 0px 0px 30px;
+  }
+  
+  .collectable-img-info h4{
+    padding: 20px 0px 0px 30px;
+  }
+
+  .collectable-img{
+    padding-top: 0px;
+    width: 50px;
+    float: left;
+  }
+}
