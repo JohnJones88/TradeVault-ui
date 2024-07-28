@@ -50,25 +50,18 @@ function ViewPage() {
   return (
     <div>
 
-      <div className="container mb-4"><h3>Collectable</h3></div>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <Card border="primary container" style={{ width: '18rem' }}>
-        <Card.Body>
-          <div className="row">
-            <label className="form-label">Name: {name}</label>
-          </div>
-          <div className="row">
-            <label className="form-label">Description: {description}</label>
-          </div>
-          <div className="row">
-            <label className="form-label">Age: {age}</label>
-          </div>
-          <div className="row">
-            <label className="form-label">Condition: {condition}</label>
-          </div>
-          <button className="btn btn-primary" type="button" onClick={() => navigate('/home')}>Home </button>
-        </Card.Body>
-      </Card>
+      <body className="container-body">
+        <div className="wrapper">
+          <article className="collectable-img-info">
+            <h2>name: {name}</h2>
+            <p>description: {description}</p>
+            <h4>condition: {condition}</h4>
+          </article>
+          <img className="collectable-img" src="http://localhost:3000/s-l1200.webp" alt="Collectable Image" />
+        </div>
+      </body>
 
     </div>
   )
