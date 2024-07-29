@@ -13,6 +13,7 @@ import ViewPage from "./pages/view/ViewPage";
 import CreatePage from "./pages/create/CreatePage";
 import WithoutNav from "./components/WithoutNav";
 import WithNav from "./components/WithNav";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
           <Route path='/' element={<LogInPage />} />
         </Route>
         <Route element={<WithNav />}>
-          <Route path='/home' element={<HomePage />} />
+          <Route path='/home' element={<PrivateRoute><HomePage /></PrivateRoute>} />
           <Route path='/view' element={<ViewPage />} />
           <Route path='/view/:id' element={<ViewPage />} />
           <Route path='/create' element={<CreatePage />} />
