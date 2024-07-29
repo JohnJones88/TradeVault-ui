@@ -51,6 +51,9 @@ function HomePage() {
             }
             const resp = await fetch(process.env.REACT_APP_BASE_URL + '/collectables?random=6', options); // Grabs 6 random collectables
             // const resp = await fetch("./homePageData.json");
+            if(resp.status === 401){
+                navigate('/')
+              }
             const data = await resp.json();
 
             setCollectables(data);

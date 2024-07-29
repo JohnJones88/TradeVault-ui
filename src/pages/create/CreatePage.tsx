@@ -70,8 +70,15 @@ function CreatePage() {
       }
 
       try {
+        
         const response = await fetch(url, options);
+        if(response.status === 401){
+          navigate('/')
+        }
+
         const data = await response.json()
+
+    
         console.log(data);
 
         navigate(`/view/${data.id}`)
