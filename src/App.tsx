@@ -26,9 +26,9 @@ function App() {
         </Route>
         <Route element={<WithNav />}>
           <Route path='/home' element={<PrivateRoute><HomePage /></PrivateRoute>} />
-          <Route path='/view' element={<ViewPage />} />
-          <Route path='/view/:id' element={<ViewPage />} />
-          <Route path='/create' element={<CreatePage />} />
+          <Route path='/view' element={<PrivateRoute><ViewPage /></PrivateRoute>} />
+          <Route path='/view/:id' element={<PrivateRoute><ViewPage /></PrivateRoute>} />
+          <Route path='/create' element={<PrivateRoute><CreatePage /></PrivateRoute>} />
         </Route>
       </Routes>
     </BrowserRouter>
