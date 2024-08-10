@@ -35,7 +35,7 @@ function CreatePage() {
       <div className="CreatePage"><input
           type="file"
           onChange={(e) => {
-            setImageUpload(e.target.files ? [0]);
+            setImageUpload(e.target.files[0]);
           }} />
         <button onClick={uploadImage}>Upload Image</button>
         <img src={imageUrl} />
