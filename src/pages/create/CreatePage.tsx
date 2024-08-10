@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
+import { storage } from "c:/Users/19196/Desktop/TradeVault-ui/src/firebase"
+import { getDownloadURL, ref, uploadBytes, } from "firebase/storage";
+import { v4 } from "uuid";
 
 
 
@@ -13,13 +16,32 @@ function CreatePage() {
   const [description, setDescription] = useState('');
   const [age, setAge] = useState('')
   const [condition, setCondition] = useState('')
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+
+  const imagesListRef = ref(storage, "images/");
+  const uploadImage = async () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    const snapshot = await uploadBytes(imageRef, imageUpload)
+    const url = await getDownloadURL(snapshot.ref);
+    setImageUrl(url)
+  };
 
 
   return (
     <div className="container pt-4">
-      <div className="mb-5">
-        {id ? <h1>Update Collectable</h1> : <h1>Create Collectable</h1>}
-      </div>
+    
+      <div className="CreatePage"><input
+          type="file"
+          onChange={(e) => {
+            setImageUpload(e.target.files ? [0]);
+          }} />
+        <button onClick={uploadImage}>Upload Image</button>
+        <img src={imageUrl} />
+        </div>
+
+
       <div className="row mb-3">
         <div className="col-4">
           <label className="form-label">Name</label>
@@ -70,15 +92,15 @@ function CreatePage() {
       }
 
       try {
-        
+
         const response = await fetch(url, options);
-        if(response.status === 401){
+        if (response.status === 401) {
           navigate('/')
         }
 
         const data = await response.json()
 
-    
+
         console.log(data);
 
         navigate(`/view/${data.id}`)

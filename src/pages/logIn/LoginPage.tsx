@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import './LoginPage.css';
-import BaseHttpServices from "../../services/BaseHttpServices";
+import BaseHttpServices from "../../components/services/BaseHttpServices";
 
 function LogInPage() {
   const navigate = useNavigate();
