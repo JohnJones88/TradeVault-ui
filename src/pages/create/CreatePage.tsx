@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
-import { storage } from "c:/Users/19196/Desktop/TradeVault-ui/src/firebase"
+import { storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytes, } from "firebase/storage";
 import { v4 } from "uuid";
 
@@ -16,7 +16,7 @@ function CreatePage() {
   const [description, setDescription] = useState('');
   const [age, setAge] = useState('')
   const [condition, setCondition] = useState('')
-  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUpload, setImageUpload] = useState<any>(null);
   const [imageUrl, setImageUrl] = useState("");
 
   const imagesListRef = ref(storage, "images/");
@@ -31,15 +31,18 @@ function CreatePage() {
 
   return (
     <div className="container pt-4">
-    
+
       <div className="CreatePage"><input
-          type="file"
-          onChange={(e) => {
-            setImageUpload(e.target.files[0]);
-          }} />
+        type="file"
+        onChange={(e) => {
+          if (e.target.files == null) {
+            return
+          }
+          setImageUpload(e.target.files[0]);
+        }} />
         <button onClick={uploadImage}>Upload Image</button>
         <img src={imageUrl} />
-        </div>
+      </div>
 
 
       <div className="row mb-3">
@@ -88,7 +91,7 @@ function CreatePage() {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-        body: JSON.stringify({ name: name, description: description, age: age, condition: condition })
+        body: JSON.stringify({ name: name, description: description, age: age, condition: condition, image: imageUrl })
       }
 
       try {
@@ -115,7 +118,7 @@ function CreatePage() {
       const options = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-        body: JSON.stringify({ name: name, description: description, age: age, condition: condition })
+        body: JSON.stringify({ name: name, description: description, age: age, condition: condition, image: imageUrl })
       }
 
       try {
