@@ -91,7 +91,7 @@ function CreatePage() {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-        body: JSON.stringify({ name: name, description: description, age: age, condition: condition, image: imageUrl })
+        body: JSON.stringify({ name: name, description: description, age: age, condition: condition, imageUrl: imageUrl })
       }
 
       try {
@@ -118,7 +118,7 @@ function CreatePage() {
       const options = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'authorization': `${localStorage.getItem('profile-token')}` },
-        body: JSON.stringify({ name: name, description: description, age: age, condition: condition, image: imageUrl })
+        body: JSON.stringify({ name: name, description: description, age: age, condition: condition, imageUrl: imageUrl })
       }
 
       try {
