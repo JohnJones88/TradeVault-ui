@@ -7,7 +7,7 @@ import TradeVaultCard from "../../components/card/TradeVaultCard";
 
 function MyCollectionPage() {
   const navigate = useNavigate();
-  const id = useParams();
+  const { id } = useParams();
   const [myCollections, setMyCollections] = useState<Collectable[]>([])
 
   useEffect(() => {

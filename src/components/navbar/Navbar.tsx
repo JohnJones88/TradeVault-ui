@@ -13,7 +13,7 @@ export const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Login</Nav.Link>
-              <Nav.Link href="/collection">My Collection</Nav.Link>
+              <Nav.Link href={`/userCollection/${JSON.parse(localStorage.getItem('decodedtoken') || '')?.id}`}>My Collection</Nav.Link>
               <Nav.Link href="/create">Create</Nav.Link>
               <Nav.Link href="/search">Search</Nav.Link>
             </Nav>
