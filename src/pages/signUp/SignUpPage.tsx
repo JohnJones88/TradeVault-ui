@@ -11,6 +11,7 @@ function SignUpPage() {
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
   const [hasError, setHasError] = useState(false);
+  const [isNotUnique, setIsNotUnique] = useState(false);
 
   return (
     <div className="signup container d-flex align-items-center justify-content-center">
@@ -42,9 +43,16 @@ function SignUpPage() {
               <div className="d-grid mt-2">
                 <button className="btn btn-primary" type="button" onClick={SignUp}>Register</button>
               </div>
-              <p className="text-end mt-2">
+              <div className="row">
+                {isNotUnique &&
+                  <p className="col-4 error-color">
+                    Username or Email already exist
+                  </p>
+                }
+                <p className={`text-end ${isNotUnique ? 'col-8' : 'col-12'}`}>
                 Already Registered? <a href="" className="ms-2" onClick={() => navigate('/')}>Sign in</a>
-              </p>
+                </p>
+              </div>
             </form>
           </div>
         </Card.Body>
@@ -65,10 +73,15 @@ function SignUpPage() {
       try {
         const response = await fetch(url, options);
         const data = await response.json()
+        if(data.errorMessage === "Internal Server Error SequelizeUniqueConstraintError: Validation error"){
+          setIsNotUnique(true)
+          return;
+        }
         console.log(data);
 
         navigate('/')
       } catch (error) {
+        
         setHasError(true);
         console.error(error);
       }

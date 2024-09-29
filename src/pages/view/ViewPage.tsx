@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Collectable from "../../models/Collectable";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import './ViewPage.css';
 
@@ -11,7 +11,7 @@ import './ViewPage.css';
 function ViewPage() {
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const [imageUrl, setImageUrl] = useState("");
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [age, setAge] = useState('');
@@ -37,6 +37,7 @@ function ViewPage() {
         
         console.log(data);
 
+        setImageUrl(data.imageUrl)
         setName(data.name)
         setDescription(data.description)
         setAge(data.age)
@@ -56,18 +57,21 @@ function ViewPage() {
     <div>
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<Row>
       <body className="container-body">
         <div className="wrapper">
-          <article className="collectable-img-info">
-            <h2>name: {name}</h2>
+        <Col className='col-5'>
+          <img className="tv-card-image" src={imageUrl}></img>
+        </Col>
+        <Col className='col-7 ps-1'>
+            <h4>name: {name}</h4>
             <p>description: {description}</p>
-            <h4>condition: {condition}</h4>
-          </article>
-          <img className="collectable-img" src="http://localhost:3000/s-l1200.webp" alt="Collectable Image" />
+            <h5>condition: {condition}</h5>
+         </Col>
+          
         </div>
       </body>
-
+      </Row>
     </div>
   )
 }

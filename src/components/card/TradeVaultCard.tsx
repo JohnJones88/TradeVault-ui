@@ -7,19 +7,19 @@ import { Badge, Col, Row } from 'react-bootstrap';
 
 interface CardProps {
   id: number
-  image: string
+  imageUrl: string
   name: string
   description: string
   age: number
   condition: string
 }
 
-function TradeVaultCard({ id, image, age, name, description, condition }: CardProps) {
+function TradeVaultCard({ id, imageUrl, age, name, description, condition }: CardProps) {
   return (
     <div className='card tv-card p-3'>
       <Row>
         <Col className='col-5'>
-          <img className="tv-card-image" src={image}></img>
+          <img className="tv-card-image" src={imageUrl}></img>
         </Col>
         <Col className='col-7 ps-1'>
           <div>
