@@ -12,6 +12,7 @@ function PrivateRoute(props: any) {
 
         try {
             decodedToken = jwtDecode(token);
+            localStorage.setItem('decodedtoken', JSON.stringify(decodedToken))
         }
         catch (err) {
 

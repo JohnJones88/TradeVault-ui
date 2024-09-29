@@ -7,6 +7,7 @@ import SignUpPage from "./pages/signUp/SignUpPage";
 import ViewPage from "./pages/view/ViewPage";
 import CreatePage from "./pages/create/CreatePage";
 import SearchPage from "./pages/search/SearchPage";
+import MyCollectionPage from "./pages/myCollection/MyCollectionPage";
 import WithoutNav from "./components/navbar/WithoutNav";
 import WithNav from "./components/navbar/WithNav";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
@@ -26,6 +27,7 @@ function App() {
           <Route path='/view/:id' element={<PrivateRoute><ViewPage /></PrivateRoute>} />
           <Route path='/create' element={<PrivateRoute><CreatePage /></PrivateRoute>} />
           <Route path='/search' element={<PrivateRoute><SearchPage /></PrivateRoute>} />
+          <Route path='/userCollection/:id' element={<PrivateRoute><MyCollectionPage /></PrivateRoute>} />
         </Route>
       </Routes>
     </BrowserRouter>
