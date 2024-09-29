@@ -37,7 +37,7 @@ function HomePage() {
             <div className="row g-4">
                 {collectables.map((collectable) => (
                     <div onClick={() => navigateTo(collectable.id)} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
-                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} imageUrl={collectable.image} age={collectable.age} condition={collectable.condition} />
+                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} imageUrl={collectable.imageUrl} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
             </div>
