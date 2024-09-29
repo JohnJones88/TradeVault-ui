@@ -23,9 +23,9 @@ function HomePage() {
         <div className="container">
             <div className="row mb-5">
                 <Carousel className="col-12 px-0">
-                    {images.map((image) => (
+                    {images.map((imageUrl) => (
                         <Carousel.Item >
-                            <img style={{ height: '40vh' }} src={image} className="img-fluid d-block w-100" />
+                            <img style={{ height: '40vh' }} src={imageUrl} className="img-fluid d-block w-100" />
                             <Carousel.Caption>
                                 <h1>The Trade Vault</h1>
                             </Carousel.Caption>
@@ -37,7 +37,7 @@ function HomePage() {
             <div className="row g-4">
                 {collectables.map((collectable) => (
                     <div onClick={() => navigateTo(collectable.id)} key={collectable.id} className="col-xl-4 col-md-6 col-sm-12">
-                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} imageUrl={collectable.image} age={collectable.age} condition={collectable.condition} />
+                        <TradeVaultCard id={collectable.id} name={collectable.name} description={collectable.description} imageUrl={collectable.imageUrl} age={collectable.age} condition={collectable.condition} />
                     </div>
                 ))}
             </div>

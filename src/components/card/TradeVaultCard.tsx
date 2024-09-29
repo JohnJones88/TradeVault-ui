@@ -15,6 +15,7 @@ interface CardProps {
 }
 
 function TradeVaultCard({ id, imageUrl, age, name, description, condition }: CardProps) {
+  console.log(imageUrl)
   return (
     <div className='card tv-card p-3'>
       <Row>

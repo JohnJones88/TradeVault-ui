@@ -3,7 +3,8 @@
 }
 
 .tv-card-image {
-    height: 200px;
+    max-height: 200px;
+    max-width: 100px;
 }
 
 .tv-card-name {
