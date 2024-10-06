@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Collectable from "../../models/Collectable";
 import TradeVaultCard from "../../components/card/TradeVaultCard";
 import './SearchPage.css'
-/*<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />*/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,7 +12,7 @@ function SearchPage() {
   const [name, setName] = useState('');
 
   useEffect(() => {
-    searchCollectables();
+    //searchCollectables();
   }, []);
 
   return (
@@ -23,7 +22,7 @@ function SearchPage() {
           <span className="search-icon">
             <FontAwesomeIcon icon={faSearch} onClick={searchCollectables} />
           </span>
-          <input className="search-input" type="search" placeholder="Search" onChange={(e) => { setName(e.target.value) }} />
+          <input className="search-input" type="search" placeholder="Search" value={name} onChange={(e) => { setName(e.target.value) }} />
         </div>
       </form>
       <div className="container">
@@ -40,7 +39,7 @@ function SearchPage() {
   function searchCollectables() {
 
     const asyncPostCollectableSearch = async () => {
-      const url = process.env.REACT_APP_BASE_URL + '/search';
+      const url = process.env.REACT_APP_BASE_URL + '/collectables/search';
 
       const options = {
         method: 'POST',
@@ -59,8 +58,8 @@ function SearchPage() {
       } catch (error) {
         console.error(error);
       }
-      asyncPostCollectableSearch();
     }
+    asyncPostCollectableSearch();
   }
 }
 
