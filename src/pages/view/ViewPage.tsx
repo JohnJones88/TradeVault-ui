@@ -29,12 +29,12 @@ function ViewPage() {
 
       try {
         const response = await fetch(url, options);
-        if(response.status === 401){
+        if (response.status === 401) {
           navigate('/')
         }
-        
+
         const data = await response.json();
-        
+
         console.log(data);
 
         setImageUrl(data.imageUrl)
@@ -56,21 +56,26 @@ function ViewPage() {
   return (
     <div>
 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<Row>
-      <body className="container-body">
-        <div className="wrapper">
-        <Col className='col-5'>
-          <img className="tv-card-image" src={imageUrl}></img>
-        </Col>
-        <Col className='col-7 ps-1'>
-            <h4>name: {name}</h4>
-            <p>description: {description}</p>
-            <h5>condition: {condition}</h5>
-         </Col>
-          
-        </div>
-      </body>
+      <meta name="view-page" content="width=device-width, initial-scale=1.0" />
+      <Row>
+        <body className="container-body">
+          <div className="wrapper">
+            <Col className='col-5'>
+              <img className="collectable-img" src={imageUrl}></img>
+            </Col>
+            <Col className="collectable-img-info h2">
+              <h2>name: {name}</h2>
+            </Col>
+            <Col className="collectable-img-info p">
+              <p>description: {description}</p>
+
+            </Col>
+            <Col className="collectable-img-info h4">
+              <h4>condition: {condition}</h4>
+            </Col>
+
+          </div>
+        </body>
       </Row>
     </div>
   )
