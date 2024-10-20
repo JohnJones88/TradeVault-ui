@@ -17,7 +17,7 @@ function SearchPage() {
 
   return (
     <div>
-      <form>
+      <form onSubmit={submitForm}>
         <div className="search">
           <span className="search-icon">
             <FontAwesomeIcon icon={faSearch} onClick={searchCollectables} />
@@ -60,6 +60,15 @@ function SearchPage() {
       }
     }
     asyncPostCollectableSearch();
+  }
+  function submitForm(e: any) {
+    e.preventDefault();
+
+    if (!name)
+      return;
+
+    //alert(name);
+    searchCollectables();
   }
 }
 
