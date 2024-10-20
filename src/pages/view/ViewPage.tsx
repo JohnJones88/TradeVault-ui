@@ -63,15 +63,17 @@ function ViewPage() {
             <Col className='col-5'>
               <img className="collectable-img" src={imageUrl}></img>
             </Col>
-            <Col className="collectable-img-info h2">
-              <h2>name: {name}</h2>
-            </Col>
-            <Col className="collectable-img-info p">
-              <p>description: {description}</p>
+            <Col>
+              <div className="collectable-img-info h2">
+                <h2>name: {name}</h2>
+              </div>
+              <div className="collectable-img-info p">
+                <p>description: {description}</p>
+              </div>
 
-            </Col>
-            <Col className="collectable-img-info h4">
-              <h4>condition: {condition}</h4>
+              <div className="collectable-img-info h4">
+                <h4>condition: {condition}</h4>
+              </div>
             </Col>
 
           </div>
