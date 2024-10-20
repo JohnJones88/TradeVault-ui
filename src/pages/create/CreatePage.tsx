@@ -16,15 +16,15 @@ function CreatePage() {
   const [description, setDescription] = useState('');
   const [age, setAge] = useState('')
   const [condition, setCondition] = useState('')
-  const [imageUpload, setImageUpload] = useState<any>(null);
   const [imageUrl, setImageUrl] = useState("");
 
   const imagesListRef = ref(storage, "images/");
-  const uploadImage = async () => {
-    if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    const snapshot = await uploadBytes(imageRef, imageUpload)
+  const uploadImage = async (rawImage: any) => {
+    if (rawImage == null) return;
+    const imageRef = ref(storage, `images/${rawImage.name + v4()}`);
+    const snapshot = await uploadBytes(imageRef, rawImage)
     const url = await getDownloadURL(snapshot.ref);
+
     setImageUrl(url)
   };
 
@@ -38,9 +38,10 @@ function CreatePage() {
           if (e.target.files == null) {
             return
           }
-          setImageUpload(e.target.files[0]);
+
+          uploadImage(e.target.files[0]);
         }} />
-        <button onClick={uploadImage}>Upload Image</button>
+
         <img src={imageUrl} />
       </div>
 
